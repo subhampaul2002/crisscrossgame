@@ -1,0 +1,112 @@
+<html>
+<head>
+<script src="jquery.js"></script>
+<style>
+.box{
+	float:right;
+	border: 1px solid #7767758a;
+	height:66px;
+	width:32%;
+	##padding:5px;
+	border-radius:31px;
+	background-color:white;
+
+}
+.container{
+	border: 1px ;
+    height: 211px;
+    width: 238px;
+    padding: 5px;
+    margin: auto;
+    margin-top: 204px;
+    border-radius: 39px;
+	background-color:#7767758a;
+
+}
+
+.box div{
+	margin: auto;
+    width: 26%;
+    padding: 23px;
+	cursor:pointer;
+}
+.box:hover{
+	box-shadow: 0px 10px 5px 0 #a3a4a5b3;
+}
+
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="box" id="box1" onclick="play(this);"><div></div></div> 
+<div class="box" id="box2" onclick="play(this);"><div></div></div> 
+<div class="box" id="box3" onclick="play(this);"><div></div></div> 
+<div class="box" id="box4" onclick="play(this);"><div></div></div>
+<div class="box" id="box5" onclick="play(this);"><div></div></div>
+<div class="box" id="box6" onclick="play(this);"><div></div></div>
+<div class="box" id="box7" onclick="play(this);"><div></div></div>
+<div class="box" id="box8" onclick="play(this);"><div></div></div>
+<div class="box" id="box9" onclick="play(this);"><div></div></div>
+
+
+
+</div>
+
+<script type="text/javascript">
+var toggle='O';
+var ini='.........';
+var arr=ini.split('');
+//alert(arr[1]);
+function play(obj){
+	//alert(obj.id);
+	document.getElementById(obj.id).innerHTML="<div>"+toggle+"</div>";
+	
+	
+	$("#"+obj.id).removeAttr('onclick');
+	var id=obj.id.replace('box','');
+	var nid=parseInt(id);
+	arr[nid-1]=toggle;
+	
+	if(toggle=='O')
+		toggle="X";
+	else
+		toggle='O';
+		
+	checkgain(arr);
+}
+function checkgain(){
+	if((arr[0]=='O' && arr[1]=='O' && arr[2]=='O') 
+	|| (arr[3]=='O' && arr[4]=='O' && arr[5]=='O') 
+	|| (arr[6]=='O' && arr[7]=='O' && arr[8]=='O') 
+	|| (arr[0]=='O' && arr[3]=='O' && arr[6]=='O') 
+	|| (arr[1]=='O' && arr[4]=='O' && arr[7]=='O') 
+	|| (arr[2]=='O' && arr[5]=='O' && arr[8]=='O') 
+	|| (arr[0]=='O' && arr[4]=='O' && arr[8]=='O') 
+	|| (arr[2]=='O' && arr[4]=='O' && arr[6]=='O')){
+		alert("O Won And X Loose");
+		location.reload();
+	}
+	
+	 if((arr[0]=='X' && arr[1]=='X' && arr[2]=='X') 
+	|| (arr[3]=='X' && arr[4]=='X' && arr[5]=='X') 
+	|| (arr[6]=='X' && arr[7]=='X' && arr[8]=='X') 
+	|| (arr[0]=='X' && arr[3]=='X' && arr[6]=='X') 
+	|| (arr[1]=='X' && arr[4]=='X' && arr[7]=='X') 
+	|| (arr[2]=='X' && arr[5]=='X' && arr[8]=='X') 
+	|| (arr[0]=='X' && arr[4]=='X' && arr[8]=='X') 
+	|| (arr[2]=='X' && arr[4]=='X' && arr[6]=='X')){
+		alert("O Won And X Loose");
+		location.reload();
+	}
+
+
+	
+	
+	
+}
+</script>
+</body>
+
+
+</html>
